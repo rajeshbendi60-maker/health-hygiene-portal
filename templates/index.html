@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Smart Health & Hygiene Portal</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#050816;
+
+color:white;
+
+overflow-x:hidden;
+
+position:relative;
+}
+
+/* Animated Background */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#00bfff44,transparent 70%);
+
+top:-200px;
+left:-200px;
+
+animation:move1 8s infinite alternate;
+
+z-index:-1;
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#0066ff44,transparent 70%);
+
+bottom:-200px;
+right:-200px;
+
+animation:move2 8s infinite alternate;
+
+z-index:-1;
+}
+
+@keyframes move1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(120px,90px);
+}
+
+}
+
+@keyframes move2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-120px,-90px);
+}
+
+}
+
+/* Navbar */
+
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 60px;
+
+background:rgba(17,24,39,0.7);
+
+backdrop-filter:blur(12px);
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+
+font-size:32px;
+
+font-weight:bold;
+
+color:#00bfff;
+
+text-shadow:
+0 0 15px #00bfff;
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+margin-left:25px;
+
+font-size:16px;
+
+transition:0.4s;
+}
+
+nav a:hover{
+
+color:#00bfff;
+}
+
+/* Hero Section */
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:80px;
+
+flex-wrap:wrap;
+}
+
+.hero-text{
+
+width:50%;
+
+min-width:320px;
+
+animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.hero-text h1{
+
+font-size:75px;
+
+line-height:90px;
+}
+
+.hero-text span{
+
+color:#00bfff;
+}
+
+.hero-text p{
+
+margin-top:25px;
+
+font-size:22px;
+
+line-height:35px;
+
+color:#ccc;
+}
+
+/* Buttons */
+
+.buttons{
+
+margin-top:40px;
+}
+
+.buttons a{
+
+display:inline-block;
+
+padding:16px 35px;
+
+margin-right:20px;
+
+border-radius:40px;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:0.4s;
+}
+
+.btn1{
+
+background:linear-gradient(45deg,#00bfff,#0066ff);
+
+color:white;
+}
+
+.btn2{
+
+border:2px solid #00bfff;
+
+color:white;
+}
+
+.buttons a:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+0 0 25px #00bfff;
+}
+
+/* Floating Circle */
+
+.circle{
+
+width:360px;
+height:360px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,#00bfff,#0066ff);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+box-shadow:
+0 0 50px #00bfff;
+
+animation:float 3s infinite alternate;
+}
+
+.circle i{
+
+font-size:150px;
+}
+
+@keyframes float{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-20px);
+}
+
+}
+
+/* Features */
+
+.features{
+
+display:flex;
+justify-content:center;
+
+gap:30px;
+
+padding:60px;
+
+flex-wrap:wrap;
+}
+
+.card{
+
+width:300px;
+
+background:rgba(17,24,39,0.75);
+
+padding:35px;
+
+border-radius:25px;
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+transition:0.4s;
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+0 0 25px #00bfff55;
+}
+
+.card i{
+
+font-size:50px;
+
+color:#00bfff;
+
+margin-bottom:20px;
+}
+
+.card h2{
+
+margin-bottom:15px;
+
+font-size:28px;
+}
+
+.card p{
+
+line-height:28px;
+
+color:#ccc;
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:50px;
+
+padding:25px;
+
+text-align:center;
+
+background:#111827;
+
+color:#aaa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+Health & Hygiene
+
+</div>
+
+<div>
+
+<a href="/">Home</a>
+
+<a href="/login">Login</a>
+
+<a href="/register">Register</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>
+
+Smart
+<span>Health & Hygiene</span>
+Portal
+
+</h1>
+
+<p>
+
+A modern smart complaint management
+portal for garbage overflow,
+sanitation, drainage and hygiene
+monitoring in communities.
+
+</p>
+
+<div class="buttons">
+
+<a href="/login"
+class="btn1">
+
+<i class="fa-solid fa-user"></i>
+
+Get Started
+
+</a>
+
+<a href="/register"
+class="btn2">
+
+<i class="fa-solid fa-user-plus"></i>
+
+Create Account
+
+</a>
+
+</div>
+
+</div>
+
+<div class="circle">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+
+<i class="fa-solid fa-trash"></i>
+
+<h2>Garbage Monitoring</h2>
+
+<p>
+
+Citizens can instantly report
+garbage overflow and sanitation
+issues with images.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h2>Smart GPS Tracking</h2>
+
+<p>
+
+Automatic live location detection
+with accurate address details.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-camera"></i>
+
+<h2>Live Image Upload</h2>
+
+<p>
+
+Capture live issue photos using
+camera or recent gallery images.
+
+</p>
+
+</div>
+
+</section>
+
+<div class="footer">
+
+© 2026 Smart Health & Hygiene Complaint Management Portal
+
+</div>
+
+</body>
+</html>

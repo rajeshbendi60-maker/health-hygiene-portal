@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>User Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#050816;
+
+color:white;
+
+padding:30px;
+
+overflow-x:hidden;
+
+position:relative;
+}
+
+/* Animated Background */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#00bfff33,transparent 70%);
+
+top:-200px;
+left:-200px;
+
+animation:move1 8s infinite alternate;
+
+z-index:-1;
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#0066ff33,transparent 70%);
+
+bottom:-200px;
+right:-200px;
+
+animation:move2 8s infinite alternate;
+
+z-index:-1;
+}
+
+@keyframes move1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(100px,80px);
+}
+
+}
+
+@keyframes move2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-100px,-80px);
+}
+
+}
+
+/* Navbar */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 35px;
+
+background:rgba(17,24,39,0.75);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+margin-bottom:35px;
+
+flex-wrap:wrap;
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:bold;
+
+color:#00bfff;
+
+text-shadow:
+0 0 15px #00bfff;
+}
+
+.menu{
+
+margin-top:10px;
+}
+
+.menu a{
+
+color:white;
+
+text-decoration:none;
+
+margin-left:25px;
+
+font-size:17px;
+
+transition:0.4s;
+}
+
+.menu a:hover{
+
+color:#00bfff;
+}
+
+/* Title */
+
+.title{
+
+text-align:center;
+
+font-size:45px;
+
+margin-bottom:35px;
+
+color:#00bfff;
+
+text-shadow:
+0 0 15px #00bfff;
+}
+
+/* Analytics */
+
+.analytics{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+}
+
+.analytics-card{
+
+flex:1;
+
+min-width:220px;
+
+padding:25px;
+
+border-radius:20px;
+
+background:rgba(17,24,39,0.75);
+
+text-align:center;
+
+transition:0.4s;
+}
+
+.analytics-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 0 25px #00bfff55;
+}
+
+.analytics-card h2{
+
+font-size:40px;
+
+color:#00bfff;
+}
+
+.analytics-card p{
+
+margin-top:10px;
+
+color:#ccc;
+}
+
+/* Graph */
+
+.graph-section{
+
+margin-bottom:40px;
+
+background:rgba(17,24,39,0.75);
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+}
+
+.graph-section h2{
+
+margin-bottom:25px;
+
+color:#00bfff;
+}
+
+.graph{
+
+display:flex;
+
+justify-content:center;
+align-items:flex-end;
+
+gap:25px;
+
+height:220px;
+
+flex-wrap:wrap;
+}
+
+.bar{
+
+width:60px;
+
+border-radius:15px 15px 0 0;
+
+background:linear-gradient(#00bfff,#0066ff);
+
+animation:grow 2s ease;
+}
+
+.bar1{
+height:80px;
+}
+
+.bar2{
+height:150px;
+}
+
+.bar3{
+height:120px;
+}
+
+.bar4{
+height:190px;
+}
+
+@keyframes grow{
+
+from{
+height:0;
+}
+
+}
+
+.graph-desc{
+
+margin-top:20px;
+
+color:#bbb;
+
+font-size:16px;
+
+line-height:28px;
+
+text-align:center;
+}
+
+/* Complaint Table */
+
+.table-container{
+
+overflow-x:auto;
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+background:rgba(17,24,39,0.75);
+
+border-radius:20px;
+
+overflow:hidden;
+}
+
+th{
+
+background:#00bfff;
+
+padding:18px;
+
+font-size:18px;
+}
+
+td{
+
+padding:18px;
+
+text-align:center;
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+tr:hover{
+
+background:#1f2937;
+}
+
+/* Image */
+
+img{
+
+width:130px;
+height:95px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+border:2px solid #00bfff;
+
+transition:0.4s;
+}
+
+img:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+0 0 20px #00bfff;
+}
+
+/* Status */
+
+.status{
+
+padding:10px 15px;
+
+border-radius:25px;
+
+font-weight:bold;
+
+display:inline-block;
+}
+
+.pending{
+
+background:#ff9800;
+
+box-shadow:
+0 0 12px #ff9800;
+}
+
+.completed{
+
+background:#00ff99;
+
+color:black;
+
+box-shadow:
+0 0 12px #00ff99;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.title{
+
+font-size:34px;
+}
+
+.analytics-card{
+
+min-width:100%;
+}
+
+.graph{
+
+gap:15px;
+}
+
+.bar{
+
+width:45px;
+}
+
+.menu a{
+
+display:block;
+
+margin:10px 0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+User Dashboard
+
+</div>
+
+<div class="menu">
+
+<a href="/report">
+
+Report Issue
+
+</a>
+
+<a href="/logout">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+<h1 class="title">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Complaint Analytics
+
+</h1>
+
+<!-- Analytics Cards -->
+
+<div class="analytics">
+
+<div class="analytics-card">
+
+<h2>{{ complaints|length }}</h2>
+
+<p>Total Complaints</p>
+
+</div>
+
+<div class="analytics-card">
+
+<h2>
+
+{{ complaints | selectattr('status','equalto','Completed') | list | length }}
+
+</h2>
+
+<p>Completed</p>
+
+</div>
+
+<div class="analytics-card">
+
+<h2>
+
+{{ complaints | selectattr('status','equalto','Pending') | list | length }}
+
+</h2>
+
+<p>Pending</p>
+
+</div>
+
+</div>
+
+<!-- Graph -->
+
+<div class="graph-section">
+
+<h2>User Activity Graph</h2>
+
+<div class="graph">
+
+<div class="bar bar1"></div>
+
+<div class="bar bar2"></div>
+
+<div class="bar bar3"></div>
+
+<div class="bar bar4"></div>
+
+</div>
+
+<p class="graph-desc">
+
+This graph represents user complaint activity,
+issue reporting frequency and complaint
+resolution progress in the system.
+
+</p>
+
+</div>
+
+<!-- Complaint Table -->
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>S.No</th>
+
+<th>Issue</th>
+
+<th>Description</th>
+
+<th>Image</th>
+
+<th>Location</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for complaint in complaints %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ complaint.issue }}</td>
+
+<td>{{ complaint.description }}</td>
+
+<td>
+
+<a href="/uploads/{{ complaint.image }}"
+target="_blank">
+
+<img src="/uploads/{{ complaint.image }}">
+
+</a>
+
+</td>
+
+<td>
+
+{{ complaint.street }},
+{{ complaint.village }},
+{{ complaint.state }} -
+{{ complaint.pincode }}
+
+</td>
+
+<td>
+
+{% if complaint.status == "Completed" %}
+
+<span class="status completed">
+
+Completed
+
+</span>
+
+{% else %}
+
+<span class="status pending">
+
+Pending
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

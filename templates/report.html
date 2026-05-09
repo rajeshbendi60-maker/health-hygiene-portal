@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Report Complaint</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#050816;
+
+color:white;
+
+min-height:100vh;
+
+padding:40px;
+
+overflow-x:hidden;
+
+position:relative;
+}
+
+/* Animated Background */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#00bfff33,transparent 70%);
+
+top:-200px;
+left:-200px;
+
+animation:move1 8s infinite alternate;
+
+z-index:-1;
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#0066ff33,transparent 70%);
+
+bottom:-200px;
+right:-200px;
+
+animation:move2 8s infinite alternate;
+
+z-index:-1;
+}
+
+@keyframes move1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(100px,80px);
+}
+
+}
+
+@keyframes move2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-100px,-80px);
+}
+
+}
+
+/* Container */
+
+.container{
+
+max-width:750px;
+
+margin:auto;
+
+padding:40px;
+
+border-radius:30px;
+
+background:rgba(17,24,39,0.7);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+0 0 40px rgba(0,191,255,0.25);
+
+animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:10px;
+
+color:#00bfff;
+
+text-shadow:
+0 0 15px #00bfff;
+}
+
+.subtitle{
+
+text-align:center;
+
+margin-bottom:35px;
+
+color:#bbb;
+}
+
+/* Inputs */
+
+.input-box{
+
+margin-bottom:22px;
+
+position:relative;
+}
+
+.input-box i{
+
+position:absolute;
+
+top:18px;
+left:15px;
+
+color:#00bfff;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select{
+
+width:100%;
+
+padding:15px 15px 15px 48px;
+
+border:none;
+
+outline:none;
+
+border-radius:15px;
+
+background:#1f2937;
+
+color:white;
+
+font-size:15px;
+
+border:1px solid transparent;
+
+transition:0.4s;
+}
+
+.input-box textarea{
+
+height:120px;
+
+resize:none;
+}
+
+.input-box input:focus,
+.input-box textarea:focus,
+.input-box select:focus{
+
+border:1px solid #00bfff;
+
+box-shadow:
+0 0 15px #00bfff88;
+}
+
+/* Upload */
+
+.upload-box{
+
+background:#1f2937;
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+
+border:2px dashed #00bfff;
+
+margin-bottom:25px;
+}
+
+.upload-box input{
+
+margin-top:15px;
+
+color:white;
+}
+
+/* Button */
+
+button{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:15px;
+
+background:linear-gradient(45deg,#00bfff,#0066ff);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.4s;
+}
+
+button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 0 25px #00bfff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+Report Complaint
+
+</h1>
+
+<p class="subtitle">
+
+Submit hygiene or garbage related complaints instantly
+
+</p>
+
+<form method="POST"
+enctype="multipart/form-data">
+
+<div class="input-box">
+
+<i class="fa-solid fa-list"></i>
+
+<select name="issue" required>
+
+<option value="">Select Issue Type</option>
+
+<option>Garbage Overflow</option>
+
+<option>Drainage Problem</option>
+
+<option>Dirty Water</option>
+
+<option>Street Waste</option>
+
+<option>Public Toilet Issue</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-pen"></i>
+
+<textarea
+name="description"
+placeholder="Describe the issue clearly..."
+required></textarea>
+
+</div>
+
+<!-- AUTO LOCATION -->
+
+<div class="input-box">
+
+<i class="fa-solid fa-road"></i>
+
+<input type="text"
+name="street"
+placeholder="Street"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<input type="text"
+name="village"
+placeholder="Village / City"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-map"></i>
+
+<input type="text"
+name="state"
+placeholder="State"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input type="text"
+name="pincode"
+placeholder="Pincode"
+required>
+
+</div>
+
+<!-- IMAGE -->
+
+<div class="upload-box">
+
+<i class="fa-solid fa-camera"
+style="font-size:40px;color:#00bfff;"></i>
+
+<h3 style="margin-top:10px;">
+
+Upload Complaint Image
+
+</h3>
+
+<input type="file"
+name="image"
+accept="image/*"
+required>
+
+</div>
+
+<button type="submit">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Submit Complaint
+
+</button>
+
+</form>
+
+</div>
+
+<!-- FINAL AUTO LOCATION SCRIPT -->
+
+<script>
+
+window.onload = function () {
+
+    if ("geolocation" in navigator) {
+
+        navigator.geolocation.getCurrentPosition(
+
+            async function(position) {
+
+                const lat = position.coords.latitude;
+
+                const lon = position.coords.longitude;
+
+                try {
+
+                    const response = await fetch(
+                        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+                    );
+
+                    const data = await response.json();
+
+                    document.getElementsByName('street')[0].value =
+                        data.address.road || '';
+
+                    document.getElementsByName('village')[0].value =
+                        data.address.village ||
+                        data.address.city ||
+                        data.address.town || '';
+
+                    document.getElementsByName('state')[0].value =
+                        data.address.state || '';
+
+                    document.getElementsByName('pincode')[0].value =
+                        data.address.postcode || '';
+
+                }
+
+                catch(error){
+
+                    console.log("Location fetch failed");
+
+                }
+
+            },
+
+            function(error){
+
+                console.log("Location permission denied");
+
+            }
+
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

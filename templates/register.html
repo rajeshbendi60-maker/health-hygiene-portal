@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Register</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+
+background:#050816;
+
+color:white;
+
+position:relative;
+}
+
+/* Animated Background */
+
+body::before{
+
+content:'';
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#00bfff55,transparent 70%);
+
+top:-200px;
+left:-200px;
+
+animation:move1 8s infinite alternate;
+}
+
+body::after{
+
+content:'';
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(circle,#0066ff55,transparent 70%);
+
+bottom:-200px;
+right:-200px;
+
+animation:move2 8s infinite alternate;
+}
+
+@keyframes move1{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(100px,80px);
+}
+
+}
+
+@keyframes move2{
+
+from{
+transform:translate(0,0);
+}
+
+to{
+transform:translate(-100px,-80px);
+}
+
+}
+
+/* Floating Circles */
+
+.circle{
+
+position:absolute;
+
+border-radius:50%;
+
+background:rgba(255,255,255,0.05);
+
+animation:float 6s infinite ease-in-out;
+}
+
+.circle1{
+width:120px;
+height:120px;
+top:10%;
+left:15%;
+}
+
+.circle2{
+width:180px;
+height:180px;
+bottom:10%;
+right:15%;
+animation-delay:2s;
+}
+
+.circle3{
+width:80px;
+height:80px;
+bottom:20%;
+left:25%;
+animation-delay:4s;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-25px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Register Box */
+
+.container{
+
+width:420px;
+
+padding:45px;
+
+border-radius:30px;
+
+background:rgba(17,24,39,0.65);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,0.1);
+
+box-shadow:
+0 0 40px rgba(0,191,255,0.3);
+
+z-index:10;
+
+animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-50px) scale(0.9);
+}
+
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+.logo{
+
+text-align:center;
+
+font-size:55px;
+
+color:#00bfff;
+
+margin-bottom:15px;
+
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+h1{
+
+text-align:center;
+
+margin-bottom:10px;
+
+font-size:35px;
+
+color:#fff;
+}
+
+.subtitle{
+
+text-align:center;
+
+margin-bottom:30px;
+
+color:#aaa;
+
+font-size:15px;
+}
+
+/* Error Popup */
+
+.error-box{
+
+background:#ff004c22;
+
+border:1px solid #ff004c;
+
+padding:14px;
+
+border-radius:12px;
+
+margin-bottom:20px;
+
+color:#ff4d6d;
+
+text-align:center;
+
+font-weight:bold;
+
+animation:shake 0.4s;
+}
+
+@keyframes shake{
+
+0%{
+transform:translateX(0);
+}
+
+25%{
+transform:translateX(-5px);
+}
+
+50%{
+transform:translateX(5px);
+}
+
+75%{
+transform:translateX(-5px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
+
+/* Inputs */
+
+.input-box{
+
+margin-top:22px;
+
+position:relative;
+}
+
+.input-box i{
+
+position:absolute;
+
+top:18px;
+left:15px;
+
+color:#00bfff;
+}
+
+.input-box input{
+
+width:100%;
+
+padding:15px 15px 15px 48px;
+
+border:none;
+
+outline:none;
+
+border-radius:14px;
+
+background:#1f2937;
+
+color:white;
+
+font-size:15px;
+
+border:1px solid transparent;
+
+transition:0.4s;
+}
+
+.input-box input:focus{
+
+border:1px solid #00bfff;
+
+box-shadow:
+0 0 15px #00bfff88;
+}
+
+/* Button */
+
+button{
+
+width:100%;
+
+padding:15px;
+
+margin-top:28px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(45deg,#00bfff,#0066ff);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.4s;
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 0 25px #00bfff;
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:25px;
+
+text-align:center;
+
+color:#aaa;
+}
+
+.footer a{
+
+color:#00bfff;
+
+text-decoration:none;
+
+font-weight:bold;
+}
+
+.footer a:hover{
+
+text-shadow:
+0 0 10px #00bfff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+
+<div class="container">
+
+<div class="logo">
+
+<i class="fa-solid fa-user-plus"></i>
+
+</div>
+
+<h1>Create Account</h1>
+
+<p class="subtitle">
+
+Join Smart Health & Hygiene Monitoring Portal
+
+</p>
+
+{% if error %}
+
+<div class="error-box">
+
+<i class="fa-solid fa-circle-exclamation"></i>
+
+{{ error }}
+
+</div>
+
+{% endif %}
+
+<form method="POST">
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input type="text"
+name="username"
+placeholder="Create Username"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input type="password"
+name="password"
+placeholder="Create Password"
+required>
+
+</div>
+
+<button type="submit">
+
+Register
+
+</button>
+
+</form>
+
+<div class="footer">
+
+Already have account?
+
+<a href="/login">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
